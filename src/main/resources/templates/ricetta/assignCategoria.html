@@ -53,6 +53,21 @@ h2 {
     background-color: #218838;
     border: 1px solid #218838;
 }
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+     border: 1px solid #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -68,6 +83,7 @@ h2 {
         </div>
         <button type="submit" class="btn btn-success">Assegna</button>
     </form>
+    <a th:href="@{/ricetta}" class="btn btn-primary">Torna a Ricette</a>
 </div>
 
 </body>

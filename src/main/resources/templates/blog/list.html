@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Blog Ricette</title>
+    <style>
+        body {
+        background: linear-gradient(to right, #ff8c00, #ffcc66);
+        color: #333;
+    }
+
+       .container {
+           margin-top: 50px;
+       }
+
+       h2 {
+           color: #ffffff;
+           text-align: center;
+       }
+
+       .card {
+           margin-bottom: 20px;
+           max-width: 300px; /* Imposta la larghezza massima della card */
+       }
+
+       .card img {
+           width: 100%; /* Fai in modo che l'immagine riempia completamente la larghezza della card */
+           height: auto;
+       }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Benvenuto alla mia lista delle Ricette!</h2>
+    <div class="row">
+        <div class="col-3">
+
+            <div th:each="ricetta : ${ricettaList}" class="card">
+                <img th:src="${ricetta.image}" class="card-img-top" alt="Ricetta Image" width="100">
+                <div class="card-body">
+                    <h5 th:text="${ricetta.name}" class="card-title"></h5>
+                    <p th:text="${ricetta.ingredients}" class="card-text"></p>
+                    <p th:text="'Preparation Time: ' + ${ricetta.preparationTime} + ' min'" class="card-text"></p>
+                    <p th:text="'Portions: ' + ${ricetta.numOfPortions}" class="card-text"></p>
+                    <p th:if="${ricetta.categoria != null}" th:text="'Categoria: ' + ${ricetta.categoria.name}" class="card-text"></p>
+                    <a th:href="@{/blog/ricetta/{id}(id=${ricetta.id})}" class="btn btn-primary">Dettagli</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a th:href="@{/ricetta}" class="btn btn-success">Editor Lista Ricette</a>
+
+</div>
+
+</body>
+
+</html>

@@ -9,70 +9,73 @@
     <title>Ricetta List</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-}
+     font-family: Arial, sans-serif;
+     background: linear-gradient(to right, #3498db, #f8f9fa);
+     color: #333; /* Dark text for contrast */
+ }
 
-.container {
-    margin-top: 50px;
-}
 
-h2 {
-    color: #007bff;
-}
+  .container {
+      margin-top: 50px;
+  }
 
-.alert {
-    margin-top: 20px;
-}
+  h2 {
+      color: #007bff;
+  }
 
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
+  .alert {
+      margin-top: 20px;
+  }
 
-th, td {
+  table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+  }
+
+  th, td {
     padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #dee2e6;
-}
-
-th {
-    background-color: #007bff;
-    color: white;
-}
-
-a.btn {
-    text-decoration: none;
-    color: white;
-}
-
-.btn-primary {
-    background-color: #007bff;
-}
-
-.btn-warning,
-.btn-danger,
-.btn-success {
-    margin-top: 8px;
-}
-
-.btn-warning,
-.btn-danger {
-    margin-right: 8px;
-}
-
-.text-center {
     text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    font-weight: bold;
 }
 
-.mt-3 {
-    margin-top: 15px;
-}
+  th {
+      background-color: #007bff;
+      color: white;
+  }
 
-.mb-3 {
-    margin-bottom: 15px;
-}
+  a.btn {
+      text-decoration: none;
+      color: white;
+  }
+
+  .btn-primary {
+      background-color: #007bff;
+  }
+
+  .btn-warning,
+  .btn-danger,
+  .btn-success {
+      margin-top: 8px;
+  }
+
+  .btn-warning,
+  .btn-danger {
+      margin-right: 8px;
+  }
+
+  .text-center {
+      text-align: center;
+  }
+
+  .mt-3 {
+      margin-top: 15px;
+  }
+
+  .mb-3 {
+      margin-bottom: 15px;
+  }
     </style>
 </head>
 
@@ -93,7 +96,7 @@ a.btn {
             <th>Description</th>
             <th>Actions</th>
             <th>Category</th>
-            <th>Image</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -111,11 +114,14 @@ a.btn {
                 </form>
             </td>
             <td>
-                <a class="btn btn-primary" th:href="@{/ricetta/assignCategoria/{id}(id=${ricetta.id})}">Assegna Categoria</a>
                 <p th:if="${ricetta.categoria != null}" class="text-center">
                     <span th:text="${ricetta.categoria.name}"></span>
                 </p>
-                <p th:unless="${ricetta.categoria != null}">Categoria non assegnata</p>
+                <p th:unless="${ricetta.categoria != null}" class="mb-2">Categoria non assegnata</p>
+                <a class="btn btn-primary" th:href="@{/ricetta/assignCategoria/{id}(id=${ricetta.id})}">Assegna Categoria</a>
+            </td>
+            <td>
+                <img th:src="${ricetta.image}" alt="Ricetta Image" width="300">
             </td>
         </tr>
         </tbody>
@@ -124,6 +130,7 @@ a.btn {
 
 <div class="mt-3 mb-3 text-center">
     <a class="btn btn-primary" th:href="@{/ricetta/create}">Add new Ricetta</a>
+    <a class="btn btn-secondary" th:href="@{/blog}">Vai al Blog</a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
