@@ -14,7 +14,7 @@
     <style>
         body {
     font-family: 'Arial', sans-serif;
-    background-color: #bee0f5;
+    background-color: #dbe5ff;
     margin: 0;
     padding: 20px;
 }
@@ -23,37 +23,36 @@
     max-width: 600px;
     margin: auto;
     background-color: #fff;
-    border: 1px solid #1e4ba5;
+    border: 2px solid #3a4d7f;
     border-radius: 8px;
     padding: 20px;
 }
 
 h2 {
-    color: #1e4ba5;
+    color: #3a4d7f;
 }
 
 h1 {
-    color: #f5a623;
+    color: #e07b00;
     text-align: center;
     margin-bottom: 20px;
 }
 
 .form-control {
-    border-color: #1e4ba5;
+    border-color: #3a4d7f;
 }
 
 .btn-primary {
-    background-color: #1e4ba5;
-    border-color: #1e4ba5;
+    background-color: #3a4d7f;
+    border-color: #3a4d7f;
     color: #fff;
 }
 
 .btn-secondary {
-    background-color: #343a40;
-    border-color: #343a40;
+    background-color: #f03e3e;
+    border-color: #f03e3e;
     color: #fff;
 }
-
     </style>
 </head>
 
@@ -62,7 +61,7 @@ h1 {
 <div class="container">
     <div class="row">
         <h1>Create new Ricetta</h1>
-        <form th:action="@{/ricetta/create}" th:object="${ricetta}" method="post">
+        <form th:action="@{/ricetta/edit/{id}(id=${ricetta.id})}" th:object="${ricetta}" method="post">
 
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>

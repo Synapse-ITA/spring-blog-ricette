@@ -84,6 +84,7 @@ a.btn {
             <td th:text="${ricetta.preparationTime}"></td>
             <td th:text="${ricetta.numOfPortions}"></td>
             <td th:text="${ricetta.description}"></td>
+            <td><a class="btn btn-warning btn-sm" th:href="@{'/ricetta/edit/' + ${ricetta.id}}">Modifica</a></td>
         </tr>
         </tbody>
     </table>
