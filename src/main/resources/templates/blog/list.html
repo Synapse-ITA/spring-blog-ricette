@@ -41,17 +41,19 @@
     <div class="row">
         <div class="col-3">
 
-            <div th:each="ricetta : ${ricettaList}" class="card">
-                <img th:src="${ricetta.image}" class="card-img-top" alt="Ricetta Image" width="100">
-                <div class="card-body">
-                    <h5 th:text="${ricetta.name}" class="card-title"></h5>
-                    <p th:text="${ricetta.ingredients}" class="card-text"></p>
-                    <p th:text="'Preparation Time: ' + ${ricetta.preparationTime} + ' min'" class="card-text"></p>
-                    <p th:text="'Portions: ' + ${ricetta.numOfPortions}" class="card-text"></p>
-                    <p th:if="${ricetta.categoria != null}" th:text="'Categoria: ' + ${ricetta.categoria.name}" class="card-text"></p>
-                    <a th:href="@{/blog/ricetta/{id}(id=${ricetta.id})}" class="btn btn-primary">Dettagli</a>
+            <a th:each="ricetta : ${ricettaList}" th:href="@{/blog/ricetta/{id}(id=${ricetta.id})}" class="card-link">
+                <div class="card">
+                    <img th:src="${ricetta.image}" class="card-img-top" alt="Ricetta Image" width="100">
+                    <div class="card-body">
+                        <h5 th:text="${ricetta.name}" class="card-title"></h5>
+                        <p th:text="${ricetta.ingredients}" class="card-text"></p>
+                        <p th:text="'Preparation Time: ' + ${ricetta.preparationTime} + ' min'" class="card-text"></p>
+                        <p th:text="'Portions: ' + ${ricetta.numOfPortions}" class="card-text"></p>
+                        <p th:if="${ricetta.categoria != null}" th:text="'Categoria: ' + ${ricetta.categoria.name}" class="card-text"></p>
+                    </div>
                 </div>
-            </div>
+            </a>
+
         </div>
     </div>
 
