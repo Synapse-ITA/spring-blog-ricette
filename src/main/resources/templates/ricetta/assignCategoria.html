@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assign Category</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+h2 {
+    color: #007bff;
+}
+
+.form-label {
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border: 1px solid #218838;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Assegna Categoria</h2>
+
+    <form th:action="@{/ricetta/assignCategoria/{id}(id=${ricetta.id})}" method="post">
+        <div class="mb-3">
+            <label for="categoriaId" class="form-label">Seleziona Categoria</label>
+            <select class="form-control" id="categoriaId" name="categoriaId" required>
+                <option th:each="categoria : ${categorie}" th:value="${categoria.id}" th:text="${categoria.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Assegna</button>
+    </form>
+</div>
+
+</body>
+</html>

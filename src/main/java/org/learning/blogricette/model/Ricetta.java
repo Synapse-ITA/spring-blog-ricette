@@ -15,6 +15,9 @@ public class Ricetta {
     private int preparationTime;
     private int numOfPortions;
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     // COSTRUTTORI
     public Ricetta() {
@@ -76,5 +79,13 @@ public class Ricetta {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

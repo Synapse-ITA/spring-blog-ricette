@@ -1,7 +1,9 @@
 package org.learning.blogricette.controller;
 
 import jakarta.validation.Valid;
+import org.learning.blogricette.model.Categoria;
 import org.learning.blogricette.model.Ricetta;
+import org.learning.blogricette.repository.CategoriaRepository;
 import org.learning.blogricette.repository.RicettaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ import java.util.Optional;
 public class RicettaController {
     @Autowired
     private RicettaRepository ricettaRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
     @GetMapping
     public String index(Model model) {
         List<Ricetta> ricettaList = ricettaRepository.findAll();
@@ -73,6 +77,37 @@ public class RicettaController {
             ricettaRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage",
                     "Ricetta " + result.get().getName() + " deleted!");
+            return "redirect:/ricetta";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ricetta with id " + id + " not found");
+        }
+    }
+
+    @GetMapping("/assignCategoria/{id}")
+    public String showAssignCategoriaForm(@PathVariable Integer id, Model model) {
+        Optional<Ricetta> result = ricettaRepository.findById(id);
+        if (result.isPresent()) {
+            Ricetta ricetta = result.get();
+            List<Categoria> categorie = categoriaRepository.findAll();
+            model.addAttribute("ricetta", ricetta);
+            model.addAttribute("categorie", categorie);
+            return "ricetta/assignCategoria";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ricetta with id " + id + " not found");
+        }
+    }
+    @PostMapping("/assignCategoria/{id}")
+    public String handleAssignCategoriaForm(@PathVariable Integer id, @RequestParam Integer categoriaId) {
+        Optional<Ricetta> result = ricettaRepository.findById(id);
+        if (result.isPresent()) {
+            Ricetta ricetta = result.get();
+            Optional<Categoria> categoria = categoriaRepository.findById(categoriaId);
+            if (categoria.isPresent()) {
+                ricetta.setCategoria(categoria.get());
+                ricettaRepository.save(ricetta);
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria with id " + categoriaId + " not found");
+            }
             return "redirect:/ricetta";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ricetta with id " + id + " not found");
