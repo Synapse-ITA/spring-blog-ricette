@@ -30,7 +30,6 @@ public class RicettaController {
         model.addAttribute("ricettaList", ricettaList);
         return "ricetta/list";
     }
-
     @GetMapping("/create")
     public String create(Model model) {
         Ricetta ricetta = new Ricetta();
@@ -113,6 +112,4 @@ public class RicettaController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ricetta with id " + id + " not found");
         }
     }
-
-
 }

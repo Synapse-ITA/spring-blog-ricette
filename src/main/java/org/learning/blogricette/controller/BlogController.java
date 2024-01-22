@@ -26,10 +26,8 @@ public class BlogController {
     public String index(Model model) {
         List<Ricetta> ricettaList = ricettaRepository.findAll();
         List<Categoria> categoriaList = categoriaRepository.findAll();
-
         model.addAttribute("ricettaList", ricettaList);
         model.addAttribute("categoriaList", categoriaList);
-
         return "blog/list";
     }
 
@@ -43,9 +41,4 @@ public class BlogController {
             return "redirect:/blog";
         }
     }
-
-
-
-
-
 }
