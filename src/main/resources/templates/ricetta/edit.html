@@ -60,7 +60,7 @@ h1 {
 
 <div class="container">
     <div class="row">
-        <h1>Create new Ricetta</h1>
+        <h1>Modifica la Ricetta</h1>
         <form th:action="@{/ricetta/edit/{id}(id=${ricetta.id})}" th:object="${ricetta}" method="post">
 
             <div class="mb-3">
@@ -113,12 +113,12 @@ h1 {
                 <textarea class="form-control" id="description" th:field="*{description}"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Create Ricetta</button>
+            <button type="submit" class="btn btn-primary">Modifica Ricetta</button>
         </form>
     </div>
 
     <div>
-        <a href="/ricetta" class="btn btn-secondary mt-3">Back to Ricetta List</a>
+        <a href="/ricetta" class="btn btn-secondary mt-3">Torna alla Lista Ricette</a>
     </div>
 </div>
 

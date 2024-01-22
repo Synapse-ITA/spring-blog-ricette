@@ -37,29 +37,27 @@
 <body>
 
 <div class="container">
-    <h2>Benvenuto alla mia lista delle Ricette!</h2>
-    <div class="row">
-        <div class="col-3">
+    <h2 class="text-center">Benvenuto alla mia lista delle Ricette!</h2>
+    <div class="row mx-auto justify-content-center align-items-center">
 
-            <a th:each="ricetta : ${ricettaList}" th:href="@{/blog/ricetta/{id}(id=${ricetta.id})}" class="card-link">
-                <div class="card">
-                    <img th:src="${ricetta.image}" class="card-img-top" alt="Ricetta Image" width="100">
-                    <div class="card-body">
-                        <h5 th:text="${ricetta.name}" class="card-title"></h5>
-                        <p th:text="${ricetta.ingredients}" class="card-text"></p>
-                        <p th:text="'Preparation Time: ' + ${ricetta.preparationTime} + ' min'" class="card-text"></p>
-                        <p th:text="'Portions: ' + ${ricetta.numOfPortions}" class="card-text"></p>
-                        <p th:if="${ricetta.categoria != null}" th:text="'Categoria: ' + ${ricetta.categoria.name}" class="card-text"></p>
-                    </div>
+        <a th:each="ricetta : ${ricettaList}" th:href="@{/blog/ricetta/{id}(id=${ricetta.id})}" class="card-link col-12 col-sm-6 col-md-4">
+            <div class="card">
+                <img th:src="${ricetta.image}" class="card-img-top" alt="Ricetta Image" width="100">
+                <div class="card-body">
+                    <h5 th:text="${ricetta.name}" class="card-title"></h5>
+                    <p th:text="${ricetta.ingredients}" class="card-text"></p>
+                    <p th:text="'Preparation Time: ' + ${ricetta.preparationTime} + ' min'" class="card-text"></p>
+                    <p th:text="'Portions: ' + ${ricetta.numOfPortions}" class="card-text"></p>
+                    <p th:if="${ricetta.categoria != null}" th:text="'Categoria: ' + ${ricetta.categoria.name}" class="card-text"></p>
                 </div>
-            </a>
+            </div>
+        </a>
 
-        </div>
     </div>
 
-    <a th:href="@{/ricetta}" class="btn btn-success">Editor Lista Ricette</a>
-
+    <a th:href="@{/ricetta}" class="btn btn-success mt-3 mb-3 text-center col-12">Editor Lista Ricette</a>
 </div>
+
 
 </body>
 
