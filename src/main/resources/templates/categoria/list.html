@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Categorie</title>
+</head>
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: left;
+}
+
+thead {
+    background-color: #34495e;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2c3e50;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background: #34495e;
+    border: 1px solid #34495e;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.btn-primary {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    border-color: #2980b9;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 15px;
+}
+</style>
+<body>
+
+<h2>Lista Categorie</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="categoria : ${categoryList}">
+        <td th:text="${categoria.id}"></td>
+        <td th:text="${categoria.name}"></td>
+        <td>
+            <a th:href="@{/categorie/edit/{id}(id=${categoria.id})}">Modifica</a>
+        </td>
+        <td>
+            <form th:action="@{/categorie/delete/{id}(id=${categoria.id})}" th:method="delete">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/categorie/create}" class="btn btn-primary">Aggiungi Categoria</a>
+    <a th:href="@{/ricetta}">Torna Indietro</a>
+
+</div>
+
+</body>
+</html>

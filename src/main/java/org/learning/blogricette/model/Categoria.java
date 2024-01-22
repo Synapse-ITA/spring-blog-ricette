@@ -44,4 +44,6 @@ public class Categoria {
     public void setRicette(List<Ricetta> ricette) {
         this.ricette = ricette;
     }
+
+
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Creazione Categoria</title>
+    <style>
+        ody {
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Sostituisci questi colori con quelli desiderati */
+    color: #fff; /* Colore del testo */
+    font-family: 'Arial', sans-serif; /* Sostituisci con il tuo tipo di carattere desiderato */
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #fff;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8); /* Sostituisci con il colore desiderato per il form */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333; /* Colore del testo del label */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50; /* Colore del pulsante */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Colore del pulsante al passaggio del mouse */
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+    </style>
+</head>
+
+<body>
+
+<h2>Creazione Categoria</h2>
+
+<form action="/categorie/create" method="post">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="submit">Salva Categoria</button>
+</form>
+
+<a href="/categorie/list">Torna alla Lista Categorie</a>
+
+</body>
+
+</html>

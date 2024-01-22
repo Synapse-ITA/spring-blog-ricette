@@ -14,12 +14,18 @@
     padding: 20px;
 }
 
-.container {
+.container_category {
     max-width: 400px;
     margin: auto;
     background-color: #fff;
     border: 1px solid #007bff;
     border-radius: 8px;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
     padding: 20px;
 }
 
@@ -71,7 +77,7 @@ h2 {
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container_category">
     <h2 class="text-center">Assegna Categoria</h2>
 
     <form th:action="@{/ricetta/assignCategoria/{id}(id=${ricetta.id})}" method="post">
@@ -83,8 +89,10 @@ h2 {
         </div>
         <button type="submit" class="btn btn-success">Assegna</button>
     </form>
-    <a th:href="@{/ricetta}" class="btn btn-primary">Torna a Ricette</a>
 </div>
-
+<div class="container d-flex justify-content-center mt-3">
+    <a th:href="@{/ricetta}" class="btn btn-primary">Torna a Ricette</a>
+    <a th:href="@{/categorie/list}" class="btn btn-primary">Vai a Lista Categorie</a>
+</div>
 </body>
 </html>
